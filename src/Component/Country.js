@@ -3,8 +3,8 @@ import style from "./country.module.css";
 const Country = (props) => {
     const {name, flags, capital, population, area} = props.country;
 
-    const handleRemoveContry =(name)=>{
-        alert(name);
+    const handleRemoveCountry =(name)=>{
+        props.onRemoveCountry(name);
     }
 
     return (
@@ -16,7 +16,7 @@ const Country = (props) => {
             <h3>Area: {area}</h3>
 
             <button className={style.btn} onClick={()=>{
-                handleRemoveContry(name.common)
+                handleRemoveCountry(name.common)
             }}>
                 Remove {name.common}
             </button>
