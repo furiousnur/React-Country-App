@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Countries from "./Component/Countries";
+import Search from "./Component/Search";
 import "./app.css";
-import country from "./Component/Country";
 
 const url = "https://restcountries.com/v3.1/all"
 
@@ -35,9 +35,20 @@ const App = () => {
         setFilteredCountries(filter);
     }
 
+    const handleSearchCountry = (searchValue) => {
+        const value = searchValue.toLowerCase();
+        const newCountries = countries.filter((country) => {
+            const countryName = country.name.common.toLowerCase();
+            return countryName.startsWith(value);
+        });
+        setFilteredCountries(newCountries);
+    }
+
     return (
         <>
             <h1>Country App</h1>
+            <br/>
+            <Search onSearchCountry={handleSearchCountry}/>
             {isLoading && <h2>Loading...</h2>}
             {error && <h2>{error.message}</h2>}
             {countries && <Countries countries={filteredCountries} onRemoveCountry={handleRemoveCountry}/>}

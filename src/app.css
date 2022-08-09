@@ -3,6 +3,7 @@ input{
  border-radius: 0.6rem;
  width: 20rem;
  font-size: 1.2rem;
+ margin-top: 30px;
 }
 input:focus{
  background-color: bisque;
